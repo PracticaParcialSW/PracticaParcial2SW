@@ -1,0 +1,40 @@
+
+<div class="banner" style="background-color: #120E2F">
+  <div class="container text-center">
+    <img src="assets/logo.jpg" alt="Logo" style="width: 400px;">
+  </div>
+</div>
+
+<div *ngIf="selected">
+  <app-receta-detail [recetaDetail]="selectedReceta"></app-receta-detail>
+ </div>
+ 
+ <hr />
+
+<div class="container mt-4">
+  <h4>** La calificación promedio es de {{promedio}} con un registro de {{totalOpiniones()}} opiniones**</h4>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4 mb-2" *ngFor="let receta of recetas">
+      <div class="card p-2" style="width: 25rem; height: 30rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ receta.nombre }}</h5>
+        </div>
+        <img
+          class="card-img-top"
+          src="{{ receta.imagen }}"
+          alt="{{ receta.nombre }}"
+          (click)="onSelected(receta)"
+        />
+        <div class="card-body">
+          <p class="card-text"> Calificación: {{ receta.estrellas }} de {{receta.cantidadOpiniones}} opiniones. <br>
+            Duración: {{ receta.duracion }} | Dificultad: {{receta.dificultad}}<br>
+            Por: {{receta.autorReceta}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
